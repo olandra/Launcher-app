@@ -11,6 +11,11 @@ if os.path.isfile('save.txt'):
         tempApps = f.read()
         tempApps = tempApps.split(',')
         apps = [x for x in tempApps if x.strip()]
+else:
+    apps.append(os.getcwd() + '/save.txt')
+    with open('save.txt', 'w') as f:
+        for app in apps:
+            f.write(app + ',')
 
 def addApp():
     filename = filedialog.askopenfile(initialdir='/', title='Select File', filetypes=(('all files', '*.*'),))
@@ -37,6 +42,9 @@ def addURL():
 
 def removeApp(app):
     apps.remove(app)
+
+    if len(apps) == 0:
+        apps.append(os.getcwd() + '/save.txt')
 
     for widget in root.winfo_children():
         widget.destroy()
