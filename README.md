@@ -1,6 +1,8 @@
 # Launcher-app
 Python app for launching apps, files and web pages
 
+Requires python 3.6+ and tkinter
+
 ## Currently implemented features
 - Ability to add apps and files
 - Ability to remove items from the list
