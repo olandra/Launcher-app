@@ -38,7 +38,30 @@ def runApp(app):
     os.startfile(app)
 
 def addURL():
-    pass
+    url = textBox.get()
+    if url:
+        apps.append(url)
+
+    for widget in root.winfo_children():
+        widget.destroy()
+
+    for app in apps:
+        button = tk.Button(root, text=app, bg='gray', command=partial(runApp, app))
+        button.bind('<Button-3>', partial(openMenu, app=app))
+        button.pack(fill='x')
+
+def addURLMenu():
+    top = tk.Toplevel()
+    top.title('Enter URL')
+    label = tk.Label(top, text='Enter URL')
+    label.grid(row=0, column=0)
+    global textBox
+    textBox = tk.Entry(top, width=40)
+    textBox.grid(row=0, column=1)
+    buttonSave = tk.Button(top, text='Save', command=addURL)
+    buttonSave.grid(row=1, column=0)
+    # buttonCancel = tk.Button(top, text='Cancel')
+    # buttonCancel.grid(row=1, column=1)
 
 def removeApp(app):
     apps.remove(app)
@@ -58,7 +81,7 @@ def openMenu(event, app):
     try:
         menu = tk.Menu(root, tearoff=0)
         menu.add_command(label='Add File', command=addApp)
-        menu.add_command(label='Add URL', command=addURL)
+        menu.add_command(label='Add URL', command=addURLMenu)
         menu.add_command(label='Remove', command=partial(removeApp, app=app))
 
         menu.tk_popup(event.x_root, event.y_root, 0)
