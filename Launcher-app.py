@@ -2,6 +2,10 @@ import tkinter as tk
 from tkinter import filedialog, Text
 import os
 from functools import partial
+import webbrowser
+
+browser = 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe'
+# browser = ''
 
 root = tk.Tk()
 apps = []
@@ -30,12 +34,12 @@ def addApp():
         button.bind('<Button-3>', partial(openMenu, app=app))
         button.pack(fill='x')
 
-def runApps():
-    for app in apps:
-        os.startfile(app)
-
 def runApp(app):
-    os.startfile(app)
+    if app[0:4] == 'http' and len(browser) != 0:
+        webbrowser.register("wb", None, webbrowser.BackgroundBrowser(browser))
+        webbrowser.get("wb").open(app, new=2)
+    else:
+        os.startfile(app)
 
 def addURL():
     url = textBox.get()
@@ -59,7 +63,7 @@ def addURLMenu():
     textBox = tk.Entry(top, width=40)
     textBox.grid(row=0, column=1)
     buttonSave = tk.Button(top, text='Save', command=addURL)
-    buttonSave.grid(row=1, column=0)
+    buttonSave.grid(row=0, column=2)
     # buttonCancel = tk.Button(top, text='Cancel')
     # buttonCancel.grid(row=1, column=1)
 

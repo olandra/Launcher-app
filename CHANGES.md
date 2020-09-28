@@ -1,5 +1,8 @@
 # Change log
 
+## 0.0.4 28.9.2020
+Added URL options to run them in preferred browser based on the input when adding an URL
+
 ## 0.0.3 27.9.2020
 Added AddURL menu
 

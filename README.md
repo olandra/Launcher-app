@@ -9,14 +9,18 @@ Requires python 3.6+ and tkinter
 - Automatic generation of the save.txt file
 - If the list of items is empty, save.txt is automatically added to the list
 - The list is saved upon closing the app, not when it's altered. Run time list is kept only in RAM
+- URLs are now opened based on wether or not you include 'http...':
+    - URLs starting with 'http...' are opened in the defined browser (currently set with the variable: browser)
+    - URLs starting without 'http...' are opened by system default browser
 
 ## To-Do
-- Add URLs
 - Add config file to save preferred web browser and wether or not the user wants new tab or window
 - Switch to indexed referrals to avoid removing the first occurrance of an item if duplicates exist
 - Add separators
 - Comments and cleaning up the code
 - Add saving save.txt into add and remove functions
+
+- Test under other OS - Currently worked and tested only on Windows10
 
 ## Considered additions
 - Ability to choose which configured browser opens a URL
