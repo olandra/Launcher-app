@@ -8,6 +8,7 @@ browser = 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe'
 # browser = ''
 
 root = tk.Tk()
+root.title("Launcher")
 apps = []
 
 if os.path.isfile('save.txt'):
@@ -30,7 +31,7 @@ def addApp():
         widget.destroy()
 
     for app in apps:
-        button = tk.Button(root, text=app, bg='gray', command=partial(runApp, app))
+        button = tk.Button(root, text=app, bg='#333337', fg="#e4ffff", command=partial(runApp, app))
         button.bind('<Button-3>', partial(openMenu, app=app))
         button.pack(fill='x')
 
@@ -50,13 +51,13 @@ def addURL():
         widget.destroy()
 
     for app in apps:
-        button = tk.Button(root, text=app, bg='gray', command=partial(runApp, app))
+        button = tk.Button(root, text=app, bg='#333337', fg="#e4ffff", command=partial(runApp, app))
         button.bind('<Button-3>', partial(openMenu, app=app))
         button.pack(fill='x')
 
 def addURLMenu():
     top = tk.Toplevel()
-    top.title('Enter URL')
+    top.title('Add URL')
     label = tk.Label(top, text='Enter URL')
     label.grid(row=0, column=0)
     global textBox
@@ -77,7 +78,7 @@ def removeApp(app):
         widget.destroy()
 
     for app in apps:
-        button = tk.Button(root, text=app, bg='gray', command=partial(runApp, app))
+        button = tk.Button(root, text=app, bg='#333337', fg="#e4ffff", command=partial(runApp, app))
         button.bind('<Button-3>', partial(openMenu, app=app))
         button.pack(fill='x')
 
@@ -93,8 +94,8 @@ def openMenu(event, app):
         menu.grab_release()
 
 for app in apps:
-    # button = tk.Button(root, text=app, bg='gray', command=lambda x=apps.index(app): runApp(apps[x]))
-    button = tk.Button(root, text=app, bg='gray', command=partial(runApp, app))
+    # button = tk.Button(root, text=app, bg='#333337', fg="#e4ffff", command=lambda x=apps.index(app): runApp(apps[x]))
+    button = tk.Button(root, text=app, bg='#333337', fg="#e4ffff", command=partial(runApp, app))
     button.bind('<Button-3>', partial(openMenu, app=app))
     button.pack(fill='x')
 
